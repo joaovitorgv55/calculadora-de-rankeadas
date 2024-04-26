@@ -1,42 +1,50 @@
-/*Instruções para entrega
- # 2️⃣ Calculadora de partidas Rankeadas
-**O Que deve ser utilizado**
-
-- Variáveis
-- Operadores
-- Laços de repetição
-- Estruturas de decisões
-- Funções
-
-## Objetivo:
-
-Crie uma função que recebe como parâmetro a quantidade de vitórias e derrotas de um jogador,
-depois disso retorne o resultado para uma variável, o saldo de Rankeadas deve ser feito através do calculo (vitórias - derrotas)
-
-Se vitórias for menor do que 10 = Ferro
-Se vitórias for entre 11 e 20 = Bronze
-Se vitórias for entre 21 e 50 = Prata
-Se vitórias for entre 51 e 80 = Ouro
-Se vitórias for entre 81 e 90 = Diamante
-Se vitórias for entre 91 e 100= Lendário
-Se vitórias for maior ou igual a 101 = Imortal
-
-## Saída
-
-Ao final deve se exibir uma mensagem:
-"O Herói tem de saldo de **{saldoVitorias}** está no nível de **{nivel}**"*/
 
 #include <stdio.h>
 #include <string.h>
 
 
-void vitoriasEderrotas() {
+int vitoriasEderrotas(int *quantidade_vitorias, int *quantidade_derrotas) {
+    int saldo_vitorias = 0;
+    saldo_vitorias = (*quantidade_vitorias - *quantidade_derrotas);
+
+    switch(saldo_vitorias) {
+        case 0 ... 10: 
+        printf("O Héroi tem saldo de %d sendo de nível ferro \n", saldo_vitorias);
+        break;
+
+        case 11 ... 20:
+        printf("O Héroi tem saldo de %d sendo de nível bronze\n", saldo_vitorias);
+        break;
+
+        case 21 ... 50:
+        printf("O Héroi tem saldo de %d sendo de nível prata \n", saldo_vitorias);
+        break;
+        
+        case 51 ... 80:
+        printf("O Héroi tem saldo de %d sendo de nível ouro\n", saldo_vitorias);
+        break;
+
+        case 81 ... 90:
+        printf("O Héroi tem saldo de %d sendo de nível diamante\n", saldo_vitorias);
+        break;
+
+        case 91 ... 100:
+        printf("O Héroi tem saldo de %d sendo de nível lendário\n", saldo_vitorias);
+        break;
+
+        default:
+        printf("O Héroi tem saldo de %d sendo de nível imortal\n", saldo_vitorias);
+    }
+
+        return saldo_vitorias;
 
 }
 
 
 int main() {
-int vitorias = 0, derrotas = 0; 
+int vitorias = 0, derrotas = 0, opcao_fim_cod = 0; 
+
+while(opcao_fim_cod != 1) {
 
 printf("quantas vítorias o jogador possui?\n");
 scanf("%d", &vitorias);
@@ -44,7 +52,10 @@ scanf("%d", &vitorias);
 printf("quantas derrotas o jogador possui?\n");
 scanf("%d", &derrotas);
 
-    vitoriasEderrotas(&vitorias, &derrotas);
+vitoriasEderrotas(&vitorias, &derrotas);
 
-    return 0;
+printf("DIGITE 1 PARA ENCERRAR O PROGRAMA OU 2 PARA CLASSIFICAR NOVAMENTE\n");
+scanf("%d", &opcao_fim_cod);
+
+}
 }
